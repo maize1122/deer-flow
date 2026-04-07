@@ -9,6 +9,17 @@ description: Use this skill when the user requests to generate, create, imagine,
 
 This skill generates high-quality images using structured prompts and a Python script. The workflow includes creating JSON-formatted prompts and executing image generation with optional reference images.
 
+## Compatibility Requirement
+
+This skill requires a code-execution tool such as `run_code` so it can invoke the Python generation script.
+
+If the current tool list does not include a code-execution tool, do **not** attempt this skill. In that case:
+
+- do not call `run_code`
+- do not try to fake script execution with unrelated tools
+- fall back to a tool-compatible alternative such as `frontend-design`
+- if needed, present the JSON prompt as an intermediate artifact rather than claiming an image was generated
+
 ## Core Capabilities
 
 - Create structured JSON prompts for AIGC image generation
@@ -33,6 +44,8 @@ When a user requests image generation, identify:
 Generate a structured JSON file in `/mnt/user-data/workspace/` with naming pattern: `{descriptive-name}.json`
 
 ### Step 3: Execute Generation
+
+Only do this step when a code-execution tool is actually available in the current environment.
 
 Call the Python script:
 ```bash

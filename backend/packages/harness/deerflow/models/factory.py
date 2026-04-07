@@ -38,6 +38,12 @@ def create_chat_model(name: str | None = None, thinking_enabled: bool = False, *
             "supports_vision",
         },
     )
+    # langchain_google_genai expects `google_api_key`, but this project's
+    # historical config examples used `gemini_api_key`.
+    if model_config.use == "langchain_google_genai:ChatGoogleGenerativeAI":
+        gemini_key = model_settings_from_config.pop("gemini_api_key", None)
+        if gemini_key is not None and "google_api_key" not in model_settings_from_config:
+            model_settings_from_config["google_api_key"] = gemini_key
     # Compute effective when_thinking_enabled by merging in the `thinking` shortcut field.
     # The `thinking` shortcut is equivalent to setting when_thinking_enabled["thinking"].
     has_thinking_settings = (model_config.when_thinking_enabled is not None) or (model_config.thinking is not None)

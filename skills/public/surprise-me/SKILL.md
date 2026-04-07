@@ -17,6 +17,8 @@ Read all the skills listed in the <available_skills>.
 
 Select **1 to 3** skills and design a creative mashup. The goal is a single cohesive deliverable, not separate demos.
 
+Before selecting a skill, verify that its required tools are actually available in the current environment. Skip any skill that depends on unavailable tools.
+
 **Creative combination principles:**
 - Juxtapose skills in unexpected ways (e.g., a presentation about algorithmic art, a research report turned into a slide deck, a styled doc with canvas-designed illustrations)
 - Incorporate the user's known interests/context from memory if available
@@ -41,9 +43,16 @@ If no other skills are discovered (only surprise-me exists), use one of these fa
 ### Step 4: Execute
 
 1. Read the full SKILL.md body of each selected skill
-2. Follow each skill's instructions for technical execution
+2. Follow each skill's instructions for technical execution, but only if the required tools are available
 3. Combine outputs into one cohesive deliverable
 4. Present the result with minimal preamble — let the work speak for itself
+
+## Tool Compatibility Rules
+
+- Prefer skills that can be completed with the currently available tool list.
+- If a skill requires `run_code` or another unavailable tool, do not attempt it.
+- When tool availability is limited, prefer a polished `frontend-design` HTML surprise over a partially executed multimodal workflow.
+- Never claim an image, app, or file was generated if the required execution step could not actually run.
 
 ### Step 5: Reveal
 
