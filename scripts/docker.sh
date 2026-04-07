@@ -226,7 +226,10 @@ start() {
     echo ""
     echo "  📋 View logs: make docker-logs"
     echo "  🛑 Stop:      make docker-stop"
-    echo ""
+    # shellcheck source=scripts/external-access.sh
+    # shellcheck disable=SC1091
+    source "$PROJECT_ROOT/scripts/external-access.sh"
+    deerflow_print_access_hints 2026
 }
 
 # View Docker development logs

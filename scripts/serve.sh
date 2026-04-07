@@ -207,7 +207,9 @@ if [ "${SKIP_LANGGRAPH_SERVER:-0}" = "1" ]; then
     echo ""
     echo "  💡 Set NEXT_PUBLIC_LANGGRAPH_BASE_URL=/api/langgraph-compat in frontend/.env.local"
 fi
-echo ""
+# shellcheck source=scripts/external-access.sh
+source "$REPO_ROOT/scripts/external-access.sh"
+deerflow_print_access_hints 2026
 echo "  📋 Logs:"
 echo "     - LangGraph: logs/langgraph.log"
 echo "     - Gateway:   logs/gateway.log"

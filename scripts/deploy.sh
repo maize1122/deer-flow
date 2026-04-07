@@ -205,6 +205,10 @@ echo ""
 echo "  🌐 Application: http://localhost:${PORT:-2026}"
 echo "  📡 API Gateway: http://localhost:${PORT:-2026}/api/*"
 echo "  🤖 LangGraph:   http://localhost:${PORT:-2026}/api/langgraph/*"
+# shellcheck source=scripts/external-access.sh
+# shellcheck disable=SC1091
+source "$REPO_ROOT/scripts/external-access.sh"
+deerflow_print_access_hints "${PORT:-2026}"
 echo ""
 echo "  Manage:"
 echo "    make down        — stop and remove containers"

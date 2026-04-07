@@ -1,6 +1,6 @@
 # DeerFlow - Unified Development Environment
 
-.PHONY: help config config-upgrade check install dev dev-daemon start stop up down clean docker-init docker-start docker-stop docker-logs docker-logs-frontend docker-logs-gateway
+.PHONY: help config config-upgrade check install dev dev-daemon start stop up down clean docker-init docker-start docker-stop docker-logs docker-logs-frontend docker-logs-gateway tunnel
 
 PYTHON ?= python
 BASH ?= bash
@@ -34,6 +34,7 @@ help:
 	@echo "  make docker-logs     - View Docker development logs"
 	@echo "  make docker-logs-frontend - View Docker frontend logs"
 	@echo "  make docker-logs-gateway - View Docker gateway logs"
+	@echo "  make tunnel          - Temporary public HTTPS URL (cloudflared → localhost:2026)"
 
 config:
 	@$(PYTHON) ./scripts/configure.py
@@ -175,3 +176,7 @@ up:
 # Stop and remove production containers
 down:
 	@./scripts/deploy.sh down
+
+# Temporary public URL via Cloudflare quick tunnel (install cloudflared first)
+tunnel:
+	@./scripts/external-access.sh tunnel

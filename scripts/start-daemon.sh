@@ -128,7 +128,9 @@ echo ""
 echo " 🌐 Application: http://localhost:2026"
 echo " 📡 API Gateway: http://localhost:2026/api/*"
 echo " 🤖 LangGraph: http://localhost:2026/api/langgraph/*"
-echo ""
+# shellcheck source=scripts/external-access.sh
+source "$REPO_ROOT/scripts/external-access.sh"
+deerflow_print_access_hints 2026
 echo " 📋 Logs:"
 echo " - LangGraph: logs/langgraph.log"
 echo " - Gateway: logs/gateway.log"
